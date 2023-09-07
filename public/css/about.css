@@ -1,0 +1,15 @@
+#image {
+  position: absolute;
+  border-radius: 25px;
+  left: 50px;
+  top: 100px;
+  width: 600px;
+  height: 600px;
+}
+#text {
+  position: absolute;
+  border-radius: 25px;
+  right: 5px;
+  top: 100px;
+  width: 1000px;
+}
