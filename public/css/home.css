@@ -1,17 +1,39 @@
 main {
+  position: relative;
   width: 100%;
   height: calc(100vh - 60px);
   background-color: var(--dark-blue);
   margin-top: 60px;
-  background-image: url(../img/portrait.webp);
-  background-size: 55vh, cover;
-  background-repeat: no-repeat;
-  background-position: bottom left calc(50% + 50px), center;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 100;
   column-gap: 250px;
+}
+.portrait-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url(../img/portrait.webp);
+  background-size: 55vh;
+  background-repeat: no-repeat;
+  background-position: bottom left calc(50% + 50px);
+  z-index: -1;
+}
+.main-background-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url(../img/jellyfish.webp);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.15;
+  z-index: -1;
 }
 main .main-intro h1 {
   font-size: 9.6rem;
@@ -173,4 +195,78 @@ main .main-quotes {
 }
 .c {
   width: 10%;
+}
+@media only screen and (max-width: 600px) { /*mobile*/
+  main {
+      align-items: flex-end;
+  }
+
+  main .main-intro {
+      padding-bottom: 8vh;
+  }
+
+  main .main-intro h1 {
+      font-size: 5rem;
+      line-height: 1.25;
+      text-align: center;
+  }
+
+  main .main-intro p {
+      text-align: center;
+      padding: 0px 20px;
+      font-size: 1.6rem;
+      line-height: 1.75;
+  }
+
+  main a {
+      margin: 30px auto;
+  }
+
+  main .main-quotes {
+      display: none;
+  }
+
+  .index-category {
+      padding: 40px 0px 20px;
+      row-gap: 10px;
+  }
+
+  .index-category p {
+      padding-bottom: 20px;
+  }
+
+  .index-category-box {
+      width: calc(100% - 40px);
+      height: 160px;
+  }
+  
+  .index-about-flex {
+      flex-wrap: wrap;
+      row-gap: 20px;
+  }
+
+  .index-about-img {
+      width: 60%;
+  }
+
+  .index-about-img img {
+      width: 100%;
+  }
+
+  .index-about-text {
+      flex-basis: 100%;
+  }
+
+  .index-about-text h2 {
+      text-align: center;
+  }
+
+  .index-about-text p {
+      text-align: center;
+  }
+
+  .index-about-text a {
+      margin: 0px auto 10px;
+  }
+
 }

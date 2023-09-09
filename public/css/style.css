@@ -1,3 +1,7 @@
+@font-face { /*to download a font*/
+  font-family: Roboto;
+  src: url(../fonts/Roboto-Black.ttf) url(../fonts/Roboto-BlackItalic.ttf) url(../fonts/Roboto-Bold.ttf) url(../fonts/Roboto-BoldItalic.ttf) url(../fonts/Roboto-Italic.ttf) url(../fonts/Roboto-Light.ttf) url(../fonts/Roboto-LightItalic.ttf) url(../fonts/Roboto-Medium.ttf) url(../fonts/Roboto-MediumItalic.ttf) url(../fonts/Roboto-Regular.ttf) url(../fonts/Roboto-Thin.ttf) url(../fonts/Roboto-ThinItalic.ttf);
+}
 :root {
   --dark-blue: #1A253A;
   --dark-purple: #6c5b7b;
@@ -31,7 +35,7 @@ h1 {
   text-transform: uppercase;
 }
 h2 {
-  font-size: 2.8rem;
+  font-size: 2.6rem;
   line-height: 1.5;
   color: var(--off-white);
   font-family: 'Roboto', sans-serif;
@@ -70,8 +74,9 @@ a {
   z-index: 1000;
 }
 .header-main-logo {
-  width: 120px;
+  width: 110px;
   height: 100%;
+  padding-left: 30px;
   display: flex;
 }
 .header-main-nav {
@@ -80,7 +85,6 @@ a {
 }
 .header-main-nav ul {
   list-style: none;
-  margin-left: 30px;
 }
 .header-main-nav li {
   display: inline;
@@ -165,6 +169,7 @@ a {
 }
 .footer-sitemap a:hover {
   opacity: 0.7;
+  color: var(--coral)
 }
 .footer-sitemap ul:nth-child(1) {
   flex-basis: 180px;
@@ -186,4 +191,88 @@ a {
 }
 .burger-menu, .burger-menu-btn {
   display: none;
+}
+@media only screen and (max-width: 600px) { /*mobile*/
+  .burger-menu-btn {
+      display: block;
+      margin-left: 10px;
+      width: 50px;
+      height: 50px;
+      background-image: url(../img/icons/burger.webp), url(../img/icons/close.webp);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center, center left 50px;
+  }
+
+  .burger-menu {
+      display: none;
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      z-index: 900;
+      background-color: #111;
+  }
+
+  .burger-menu ul {
+      width: 100%;
+      height: calc(100vh - 60px);
+      display: flex;
+      flex-wrap: wrap;
+      align-content: flex-start;
+  }
+
+  .burger-menu ul li {
+      flex-basis: 100%;
+      border-bottom: 2px solid #000;
+  }
+
+  .burger-menu ul li a {
+      display: block;
+      height: 100%;
+      font-size: 3rem;
+      padding: 30px 0px;
+      flex-basis: 100%;
+      text-align: center;
+  }
+
+  .wrapper-main {
+      width: calc(100% - 40px);
+  }
+
+  .header-main-logo {
+      padding-left: 20px;
+  }
+
+  .header-main-nav {
+      display: none;
+  }
+
+  .header-main-sm {
+      padding-right: 20px;
+  }
+
+  .footer-sitemap {
+      flex-wrap: wrap;
+  }
+
+  .footer-sitemap ul:nth-child(1) {
+      border-left: none;
+      padding-left: 0px;
+  }
+
+  .footer-sitemap ul:nth-child(1),
+  .footer-sitemap ul:nth-child(2), 
+  .footer-sitemap ul:nth-child(3) {
+      flex-basis: 100%;
+      text-align: center;
+      padding-bottom: 20px;
+  }
+
+  .footer-sitemap p {
+      padding: 0px 20px;
+  }
+
+  .footer-sitemap ul:nth-child(4) p {
+      text-align: center;
+  }
 }
