@@ -11,7 +11,6 @@ app.use('/',express.static('./public'));
 app.use(routes);
 
 app.use('/favicon.ico', express.static('public/favicon.webp'));
-app.use('/styles', express.static('public/css'));
 
 ////////Socekt Code//////////
 
