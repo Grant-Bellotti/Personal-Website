@@ -9,10 +9,10 @@ let router = express.Router();
 //response is info sending to client from server.
 
 router.get("/",function(req,res){
-  res.sendFile(path.resolve(__dirname + "/public/views/home.html"));  //changed
+  res.sendFile(path.resolve(__dirname + "/public/views/index.html"));  //changed
 });
 router.get("/home",function(req,res){
-  res.sendFile(path.resolve(__dirname + "/public/views/home.html"));  //changed
+  res.sendFile(path.resolve(__dirname + "/public/views/index.html"));  //changed
 });
 router.get("/about",function(req,res){
   res.sendFile(path.resolve(__dirname + "/public/views/about.html"));  //changed

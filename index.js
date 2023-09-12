@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use('/',express.static('./public'));
 app.use(routes);
 
-app.use('/favicon.ico', express.static('public/favicon.webp'));
+//app.use('/favicon.ico', express.static('public/favicon.webp'));
 
 ////////Socekt Code//////////
 
