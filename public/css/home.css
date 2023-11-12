@@ -194,7 +194,7 @@ main .main-quotes {
   width: 0%;
 }
 .c {
-  width: 10%;
+  width: 60%;
 }
 @media only screen and (max-width: 600px) { /*mobile*/
   main {
