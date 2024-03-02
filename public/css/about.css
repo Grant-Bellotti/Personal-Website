@@ -68,8 +68,8 @@
   font-size: 1.6rem;
 }
 .img-box {
-  width: 30rem;
-  height: 40rem;
+  width: 32rem;
+  height: 46rem;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -78,13 +78,13 @@
   position: relative;
 }
 .img-box:nth-child(2) {
-  background-image: url(../img/about-img/mountain.webp);
+  background-image: url(../img/about-img/cal-coast.webp);
 }
 .img-box:nth-child(3) {
-  background-image: url(../img/about-img/falls.webp);
+  background-image: url(../img/about-img/santa-cruz.webp);
 }
 .img-box:nth-child(4) {
-  background-image: url(../img/about-img/beach.webp);
+  background-image: url(../img/about-img/russian-river.webp);
 }
 
 @media only screen and (max-width: 600px) { /*mobile*/

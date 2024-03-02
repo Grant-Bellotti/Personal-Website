@@ -179,22 +179,22 @@ main .main-quotes {
   background-color: var(--coral);
 }
 .htmlcss {
-  width: 70%;
+  width: 60%;
 }
 .js {
-  width: 90%;
+  width: 65%;
 }
 .python {
-  width: 95%;
+  width: 80%;
 }
 .java {
-  width: 50%;
+  width: 30%;
 }
 .cplus {
   width: 0%;
 }
 .c {
-  width: 60%;
+  width: 30%;
 }
 @media only screen and (max-width: 600px) { /*mobile*/
   main {
