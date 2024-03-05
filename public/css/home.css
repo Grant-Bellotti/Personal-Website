@@ -53,6 +53,7 @@ main a {
   font-size: 1.8rem;
   display: block;
   background-color: var(--coral);
+  border-radius: 10px;
   padding: 5px 10px;
   width: fit-content;
   transition: all ease-in-out 200ms;
@@ -96,6 +97,7 @@ main .main-quotes {
   width: 20rem;
   height: 20rem;
   background-color: var(--dark-blue);
+  border-radius: 10px;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -119,6 +121,7 @@ main .main-quotes {
   bottom: 0;
   left: 0;
   background-color: var(--dark-blue);
+  border-radius: 10px;
   opacity: 0.6;
   transition: all ease-in-out 200ms;
 }
@@ -159,6 +162,7 @@ main .main-quotes {
   font-size: 1.8rem;
   display: block;
   background-color: var(--coral);
+  border-radius: 10px;
   padding: 5px 10px;
   width: fit-content;
   transition: all ease-in-out 200ms;
@@ -173,10 +177,12 @@ main .main-quotes {
   width: calc(100% - 8px);
   height: 20px;
   border: 2px solid #0f1622;
+  border-radius: 10px;
 }
 .index-about-skill-bar-fill {
   height: 100%;
   background-color: var(--coral);
+  border-radius: 10px;
 }
 .htmlcss {
   width: 60%;

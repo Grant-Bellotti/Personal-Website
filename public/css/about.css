@@ -1,3 +1,5 @@
+/* Masthead section */
+
 .masthead {
   position: relative;
   width: 100%;
@@ -33,11 +35,14 @@
   font-weight: 600;
   z-index: 100;
 }
+
+/* About me section*/
+
+/* old stuff
 .about-me-section{
   padding: 40px 0 20px 0;
 }
 .about-me-section h1{
-  text-transform: capitalize;
   text-align: center;
   color: var(--dark-blue);
 
@@ -47,6 +52,38 @@
   text-align: left;
   color: var(--dark-blue);
 }
+
+*/
+
+.about-me-section {
+  width: 100%;
+  padding: 40px 0px;
+  background-color: var(--off-white);
+}
+.about-me-section h1{
+  color: var(--dark-blue);
+  text-align: center;
+}
+.about-me-section-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 80px;
+}
+.about-me-section-img img {
+  width: 300px;
+  border-radius: 10px;
+}
+.about-me-section-text {
+  flex-basis: 500px;
+}
+.about-me-section-text p{
+  padding: 20px 0px;
+  color: var(--dark-blue);
+}
+
+/* images section */
+
 .about-me-images {
   width: 100%;
   padding: 40px 0px 40px 0px;
@@ -62,6 +99,18 @@
   font-size: 2.2rem;
   flex-basis: 100%;
 }
+.about-me-images a {
+  font-size: 1.8rem;
+  display: block;
+  background-color: var(--coral);
+  border-radius: 10px;
+  padding: 5px 10px;
+  width: fit-content;
+  transition: all ease-in-out 200ms;
+}
+.about-me-images a:hover {
+  background-color: var(--coral-hover);
+}
 .img-box p {
   position: absolute;
   top: -30px;
@@ -70,6 +119,7 @@
 .img-box {
   width: 32rem;
   height: 46rem;
+  border-radius: 10px;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -95,6 +145,23 @@
   }
   .about-me-images p {
     padding-bottom: 20px;
+  }
+  .img-box {
+    width: 80%;
+  }
+
+  .about-me-section-flex {
+    flex-wrap: wrap;
+    row-gap: 20px;
+  }
+  .about-me-section-img {
+    display: none;
+  }
+  .about-me-section-text {
+    flex-basis: 100%;
+  }
+  .about-me-section-text h2 {
+    text-align: center;
   }
 
 }
