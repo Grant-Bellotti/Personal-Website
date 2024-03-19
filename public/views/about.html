@@ -8,7 +8,10 @@
   <link rel="stylesheet" href="../css/reset.css">
   <link rel="stylesheet" href="../css/index.css">
   <link rel="stylesheet" href="../css/about.css">
+  <link rel="stylesheet" href="../css/chatbox.css">
   <link rel="shortcut icon" href="favicon.webp">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"> </script>
+  <script src='/socket.io/socket.io.js'></script>
 </head>
 
 <body> 
@@ -16,8 +19,8 @@
   <!-- burger menue -->
   <nav class="burger-menu">
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About Me</a></li>
+      <li><a href="/home">Home</a></li>
+      <li><a href="/about">About Me</a></li>
       <!--<li><a href="https://drive.google.com/file/d/1xzaUc-eo7QS17YYlX82WIuA7m3hwvx8e/view?usp=sharing">Resume</a></li>-->
       <li><a href="mailto:gbellotti725@gmail.com">Contact</a></li>
     </ul>
@@ -26,12 +29,12 @@
   <!-- Header section -->
   <header class="header-main">
     <div class="header-main-logo">
-      <a href="index.html"><img src="../favicon.webp" alt="logo"></a>
+      <a href="/home"><img src="../favicon.webp" alt="logo"></a>
     </div>
     <nav class="header-main-nav">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Me</a></li>
+        <li><a href="/home">Home</a></li>
+        <li><a href="/about">About Me</a></li>
         <!--<li><a href="https://drive.google.com/file/d/1xzaUc-eo7QS17YYlX82WIuA7m3hwvx8e/view?usp=sharing">Resume</a></li>-->
         <li><a href="mailto:gbellotti725@gmail.com">Contact</a></li>
       </ul>
@@ -106,14 +109,42 @@
     <a target="_blank" href="https://drive.google.com/drive/folders/1ub0ePApcDnk4EAO5E5ovi5fQKzeErDpZ?usp=sharing">See More!</a>
   </section>
 
+  <!-- Chat box -->
+
+  <section class="chatbox-container">
+    <div class="chatbox">
+        <div class="chatbox-window">
+            <div class="chatbox-header">
+                <div class="chatbox-header-image">
+                    <img src="/img/chatbot.png" alt="image">
+                </div>
+                <div class="chatbox-header-content">
+                    <h4 class="chatbox-header-heading">Chat About Grant</h4>
+                    <p class="chatbox-header-description">Hi, how can I help you today?</p>
+                </div>
+            </div>
+            <div class="chatbox-messages">
+                <div></div>
+            </div>
+            <div class="chatbox-footer">
+                <input type="text" placeholder="Write a message...">
+                <button class="chatbox-footer-send chatbox-footer-send-button">Send</button>
+            </div>
+        </div>
+        <div class="chatbox-button">
+            <button><img src="/img/chatbox.png" /></button>
+        </div>
+    </div>
+  </section>
+  
   <!-- Footer section -->
 
   <footer class="footer-main" id="contact">
     <div class="wrapper-main footer-main-flex">
       <div class="footer-sitemap">
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Me</a></li>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/about">About Me</a></li>
             <li><a href="mailto:gbellotti725@gmail.com">Contact</a></li>
           </ul>
           <ul>
@@ -134,6 +165,8 @@
     </div>
   </footer>
  
+  <script src="../js/authenticate.js"></script>
+  <script src="../js/chatbot.js"></script>
   <script src="../js/burger.js"></script>
 
 </body> 

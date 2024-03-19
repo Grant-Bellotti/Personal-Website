@@ -8,7 +8,10 @@
   <link rel="stylesheet" href="../css/reset.css">
   <link rel="stylesheet" href="../css/index.css">
   <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="../css/chatbox.css">
   <link rel="shortcut icon" href="favicon.webp">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"> </script>
+  <script src='/socket.io/socket.io.js'></script>
 </head>
 
 <body> 
@@ -16,8 +19,8 @@
   <!-- burger menue -->
   <nav class="burger-menu">
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About Me</a></li>
+      <li><a href="/home">Home</a></li>
+      <li><a href="/about">About Me</a></li>
       <!--<li><a href="https://drive.google.com/file/d/1xzaUc-eo7QS17YYlX82WIuA7m3hwvx8e/view?usp=sharing">Resume</a></li>-->
       <li><a href="mailto:gbellotti725@gmail.com">Contact</a></li>
     </ul>
@@ -26,12 +29,12 @@
   <!-- Header section -->
   <header class="header-main">
     <div class="header-main-logo">
-      <a href="index.html"><img src="../favicon.webp" alt="logo"></a>
+      <a href="/home"><img src="../favicon.webp" alt="logo"></a>
     </div>
     <nav class="header-main-nav">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Me</a></li>
+        <li><a href="/home">Home</a></li>
+        <li><a href="/about">About Me</a></li>
         <!--<li><a href="https://drive.google.com/file/d/1xzaUc-eo7QS17YYlX82WIuA7m3hwvx8e/view?usp=sharing">Resume</a></li>-->
         <li><a href="mailto:gbellotti725@gmail.com">Contact</a></li>
       </ul>
@@ -87,7 +90,7 @@
             <h2>A Bit About Me</h2>
             <p>Hey there! I'm Grant, a sophomore at the University of California, Santa Cruz, who is a passionate problem solver with an endless curiosity of computer science and the possibilities that come with it. I love the intricate nature of coding and debugging, algorithms, data structures, and software development, and using them to create solutions to complex challenges.</p>
             <p>My expertise extends across multiple programming languages, and I thrive in collaborative environments where I can exchange ideas and learn from other technology enthusiasts. Beyond computer science, I have a penchant for staying active, exploring nature, and diving into upcoming technologies.</p>
-            <a href="about.html">Get To Know Me</a>
+            <a href="/about">Get To Know Me</a>
         </div>
         <div class="index-about-skill">
             <p>HTML & CSS</p>
@@ -118,14 +121,42 @@
     </div>
   </section>
 
+  <!-- Chat box -->
+
+  <section class="chatbox-container">
+    <div class="chatbox">
+        <div class="chatbox-window">
+            <div class="chatbox-header">
+                <div class="chatbox-header-image">
+                    <img src="/img/chatbot.png" alt="image">
+                </div>
+                <div class="chatbox-header-content">
+                    <h4 class="chatbox-header-heading">Chat About Grant</h4>
+                    <p class="chatbox-header-description">Hi, how can I help you today?</p>
+                </div>
+            </div>
+            <div class="chatbox-messages">
+                <div></div>
+            </div>
+            <div class="chatbox-footer">
+                <input type="text" placeholder="Write a message...">
+                <button class="chatbox-footer-send chatbox-footer-send-button">Send</button>
+            </div>
+        </div>
+        <div class="chatbox-button">
+            <button><img src="/img/chatbox.png" /></button>
+        </div>
+    </div>
+  </section>
+
   <!-- Footer section -->
 
   <footer class="footer-main" id="contact">
     <div class="wrapper-main footer-main-flex">
       <div class="footer-sitemap">
           <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="about.html">About Me</a></li>
+              <li><a href="/home">Home</a></li>
+              <li><a href="/about">About Me</a></li>
               <li><a href="mailto:gbellotti725@gmail.com">Contact</a></li>
           </ul>
           <ul>
@@ -146,6 +177,8 @@
     </div>
   </footer>
 
+  <script src="../js/authenticate.js"></script>
+  <script src="../js/chatbot.js"></script>
   <script src="../js/burger.js"></script>
 
 </body>

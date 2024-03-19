@@ -1,0 +1,24 @@
+{
+    "about":
+    [
+        "skills: charismatic, hard working, honest, teamwork, reliable, empathetic",
+        "academics: 3.8 gpa, interested in software engineering, Computer Science major at UC Santa Cruz, started computer science in highschool",
+        "free time: ice skating, friends, staying active, hiking, video games, learning new things"
+    ],
+    "projects":
+    [
+        "settlers of catan: group project, java",
+        "vrchat world: self-taught, unity, data optimization, uploaded to vrchat",
+        "silence: group leader, unity, c#, completed all online",
+        "social media website: group leader, javascript, html, css, node.js, basic mongodb",
+        "personal portfolio: self taught, html, css, javascript, frontend, data optimization",
+        "dining hall point tracker: self taught, google sheet, over 200 students worth of data sorting, google script"
+    ],
+    "job_experience":
+    [
+        "panda express: April 2021 - August 2022, teamwork, customer service, fast-paced-environment",
+        "student employee: dining hall, September 2022 - March 2023, teamwork, customer service, fast-paced-environment",
+        "student supervisor: dining hall, current job since March 2023, teamwork, leadership, managing and reading data, scheduling, empathy, discipline, flexibility, problem-solving",
+        "summer intern: June 2023 - August 2023, Galileo Learning, teamwork, leadership, getting put in uncomfortable situations"
+    ]
+}
