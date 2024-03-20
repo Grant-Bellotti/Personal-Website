@@ -50,7 +50,7 @@ router.get('/getHistory', function(req, res){
 router.get("/getGPTResponse",function(req,res){
   function getSection(userInput) {
     //words to test in each group
-    let testWords = [['about', 'skill', 'skills', 'traits', 'grant', 'grants'], ['project', 'projects', 'experience', 'experiences', 'javascript', 'unity', 'work'], ['experience', 'experiences', 'work-experience', 'work-experiences', 'work', 'jobs', 'job', 'employment']];
+    let testWords = [['skill', 'skills', 'traits', 'grant', 'grants'], ['project', 'projects', 'experience', 'experiences', 'javascript', 'unity', 'work', 'website'], ['experience', 'experiences', 'work-experience', 'work-experiences', 'work', 'jobs', 'job', 'employment']];
     let removePunctuation = userInput.replace(/[.,\/#!?$%\^'&\*;:{}=\-_`~()]/g,"").replace(/\s{2,}/g," ");
     let returnStatement = [];
     userInput = removePunctuation.trim().split(" ");
