@@ -1,14 +1,14 @@
 let socket = io();
-socket.on('welcome', function(data) {
+socket.on('welcome', function(message) {
     $.ajax({
         url: "/checkAuthenticated",
         type: "GET",
-        async: false,
+        async: true,
         data: { },
-        success: function(data){
-            if (data.error == false) {
-                console.log(data.message);
-                messages = data.history;
+        success: function(data1){
+            if (data1.error == false) {
+                console.log(data1.message);
+                messages = messages.concat(data1.history);
             } 
             else {
                 $.post("/authenticate",{ username:'bob', password:'bob' },function(data2) {

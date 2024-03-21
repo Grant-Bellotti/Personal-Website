@@ -42,17 +42,17 @@ let io = require('socket.io')(server);
 
 io.on('connection', function(socket) {
     // Send welcome message to the client
-    console.log('Client connected:', socket.id);
     socket.emit('welcome', { message: 'Welcome!', id: socket.id });
 
     socket.on('update', function (data) {
       io.emit('update', data);
   });
     socket.on('disconnect', function() {
-        console.log('Client disconnected:', socket.id);
+        
     });
 });
 //////////////////////////////
 
 var port = process.env.PORT || 3000;
 server.listen(port);
+console.log("server listening on port " + port);

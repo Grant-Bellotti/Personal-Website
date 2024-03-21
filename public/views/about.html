@@ -113,27 +113,28 @@
 
   <section class="chatbox-container">
     <div class="chatbox">
-        <div class="chatbox-window">
-            <div class="chatbox-header">
-                <div class="chatbox-header-image">
-                    <img src="/img/chatbot.png" alt="image">
-                </div>
-                <div class="chatbox-header-content">
-                    <h4 class="chatbox-header-heading">Chat About Grant</h4>
-                    <p class="chatbox-header-description">Hi, how can I help you today?</p>
-                </div>
-            </div>
-            <div class="chatbox-messages">
-                <div></div>
-            </div>
-            <div class="chatbox-footer">
-                <input type="text" placeholder="Write a message...">
-                <button class="chatbox-footer-send chatbox-footer-send-button">Send</button>
-            </div>
+      <div class="chatbox-window">
+        <div class="chatbox-header">
+          <div class="chatbox-header-image">
+            <img src="/img/chatbot.png" alt="image">
+          </div>
+          <div class="chatbox-header-content">
+            <h4 class="chatbox-header-heading">Chat About Grant</h4>
+            <p class="chatbox-header-description">Hi, how can I help you today?</p>
+          </div>
         </div>
-        <div class="chatbox-button">
-            <button><img src="/img/chatbox.png" /></button>
+        <div class="chatbox-messages">
+          <div></div>
         </div>
+        <div class="chatbox-footer">
+          <input id="message-input" type="text" maxlength = "50" placeholder="Write a message...">
+          <p id="chatbox-footer-wordcount">0/50</p>
+          <button class="chatbox-footer-send chatbox-footer-send-button">Send</button>
+        </div>
+      </div>
+      <div class="chatbox-button">
+        <button><img src="/img/chatbox.png" /></button>
+      </div>
     </div>
   </section>
   

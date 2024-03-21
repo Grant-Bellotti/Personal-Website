@@ -22,13 +22,11 @@ router.get('/checkAuthenticated', function(req, res){
     res.json( { error:false, message:'user is authenticated', history: storedArray } );
   } 
   else {
-    console.log('user is not authenticated');
     res.json( { error:true, message:'user is not authenticated' } );
   }
 });
 
 router.post("/authenticate", function(req, res, next) {
-  console.log('user is authenticating...');
   next();
 
 }, passport.authenticate("login", {
@@ -100,7 +98,7 @@ router.get("/getGPTResponse",function(req,res){
   }
 
   async function main() {
-    let userInput = String(req.query.message).trim();
+    let userInput = String(req.query.content).trim().substring(0,50);
 
     if (userInput.toLowerCase() == 'exit' || userInput.toLowerCase() == 'bye' || userInput.toLowerCase() == 'good bye') {
       res.json({ role: 'assistant', content: "Please let me know if you have any more questions!" });

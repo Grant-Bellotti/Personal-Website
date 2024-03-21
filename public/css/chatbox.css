@@ -58,14 +58,6 @@
     box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
-.chatbox-footer-send-button {
-    padding: 6px;
-    background: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
-}
-
 
 /* HEADER */
 
@@ -150,6 +142,12 @@
     border-bottom-left-radius: 10px;
     margin-top: 20px;
 }
+#chatbox-footer-wordcount {
+    position: absolute;
+    right: 20px;
+    bottom: 80px;
+    color: var(--dark-blue);
+}
 .chatbox-footer input {
     width: 80%;
     border: none;
@@ -160,6 +158,13 @@
 }
 .chatbox-footer-send {
     color: var(--off-white);
+}
+.chatbox-footer-send-button {
+    padding: 6px;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
 
 @media only screen and (min-width: 700px) and (max-width: 1100px) { /*ipad*/

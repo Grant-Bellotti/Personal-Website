@@ -16,12 +16,11 @@ router.use(function(req, res, next) {
 //////////////////////////////////////////////////////
 
 router.get("/successlogin", function(req, res) {
-  console.log("Successfully authenticated");
   req.session.history = [ {role: 'system', content: "You are a helpful chatbot that reads provided data and answers questions accordingly. If the data doesn't relate to the question, you will answer normally. You don't provide code and only use given information without making up details."}];
   res.json({redirect:"/"});
 });
 router.get("/faillogin", function(req, res) {
-  res.json({redirect:"#"});
+  res.json({redirect:"/"});
 });
 
 //////////////////////////////////////////////////////

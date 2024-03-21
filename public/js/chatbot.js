@@ -1,4 +1,4 @@
-let messages = [];
+let messages = [ { role: "assistant", content: "Hey there! Just a heads up, I'm experimental at the moment, so you might find my responses a little unpredictable. Don't worry though, I'll do my best to chat with you!" } ];
 
 function displayChatbox() {
     //selecting necessary DOM elements
@@ -46,7 +46,7 @@ function displayChatbox() {
             url: "/getGPTResponse",
             type: "GET",
             async: false,
-            data: { role: "user", message: userInput },
+            data: { role: "user", content: userInput },
             success: function(data){
                 response = data; //store response data
             },
@@ -54,6 +54,7 @@ function displayChatbox() {
         });
 
         messages.push(response);
+        updateWordcount();
         updateChatText(chatbox);
     }
 
@@ -79,7 +80,14 @@ function displayChatbox() {
     }
 }
 
+function updateWordcount() {
+    $("#chatbox-footer-wordcount").text($("#message-input").val().length + '/50');
+}
+
 $(document).ready(function(){ 
     displayChatbox();
 
+    $("#message-input").on("input", updateWordcount);
+    updateWordcount();
+    
 });  
