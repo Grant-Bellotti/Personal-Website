@@ -11,8 +11,8 @@ var router = express.Router();
 ////////////////////////////////////////////////////// Global Variables
 
 const MESSAGE_MEMORY = 3 //how many messages of user and ai is inputted to bot
-const INPUT_TOKEN_LIMIT = 50;
-const REPLY_TOKEN_LIMIT = 100; //100 tokens ~= 75 words
+const INPUT_TOKEN_LIMIT = 50.0;
+const REPLY_TOKEN_LIMIT = 200.0; //100 tokens ~= 75 words
 
 //////////////////////////////////////////////////////
 
@@ -46,68 +46,22 @@ router.get('/getHistory', function(req, res){
 });
 
 router.get("/getGPTResponse",function(req,res){
-  function getSection(userInput) {
-    //words to test in each group
-    let testWords = [['skill', 'skills', 'traits', 'grant', 'grants'], ['project', 'projects', 'experience', 'experiences', 'javascript', 'unity', 'work', 'website'], ['experience', 'experiences', 'work-experience', 'work-experiences', 'work', 'jobs', 'job', 'employment']];
-    let removePunctuation = userInput.replace(/[.,\/#!?$%\^'&\*;:{}=\-_`~()]/g,"").replace(/\s{2,}/g," ");
-    let returnStatement = [];
-    userInput = removePunctuation.trim().split(" ");
+  async function main() {
+    let userInput = String(req.query.content).trim();
 
-    for (let i = 0; i < testWords.length; i++) {
-      for (let j = 0; j < userInput.length; j++) {
-        // if related to about
-        if (testWords[i].includes(userInput[j].toLowerCase()) && i == 0) {
-          returnStatement.push("about");
-        }
-        // if related to projects
-        if (testWords[i].includes(userInput[j].toLowerCase()) && i == 1) {
-          returnStatement.push("projects");
-        }
-        // if related to experience
-        if (testWords[i].includes(userInput[j].toLowerCase()) && i == 2) {
-          returnStatement.push("job_experience");
-        }
-      }
+    if (userInput.length > 50) {
+      res.json({ role: 'assistant', content: "Please make sure your character count is under 50." });
+      return;
     }
 
-    return returnStatement.filter((item,index) => returnStatement.indexOf(item) === index);
-  }
-
-  function getInputData(sections) {
-      let returnData = [];
-      let json_data;
-
-      for (let i = 0; i < sections.length; i++) {
-        if (sections[i] == 'about') {
-          json_data = data.about;
-        }
-        else if (sections[i] == 'projects') {
-          json_data = data.projects;
-        }
-        else {
-          json_data = data.job_experience;
-        }
-
-        returnData.push(["\n" + sections[i].toUpperCase() + ": "]);
-        for (let j = 0; j < json_data.length; j++) {
-          returnData[i].push(json_data[j]);
-        }
-      }
-
-      return returnData;
-  }
-
-  async function main() {
-    let userInput = String(req.query.content).trim().substring(0,50);
-
-    if (userInput.toLowerCase() == 'exit' || userInput.toLowerCase() == 'bye' || userInput.toLowerCase() == 'good bye') {
+    else if (userInput.toLowerCase() == 'exit' || userInput.toLowerCase() == 'bye' || userInput.toLowerCase() == 'good bye') {
       res.json({ role: 'assistant', content: "Please let me know if you have any more questions!" });
       return;
     }
 
     try {
       if (getInputData(getSection(userInput)).length > 0) {
-        let gptInput = ("Given this question: " + userInput + ", answer about Grant Bellotti the person. Do not use the following data about Grant Bellotti if it does not apply to the question: " + getInputData(getSection(userInput)));
+        let gptInput = ("Given this question: " + userInput + ", answer about Grant Bellotti the person. use the following data if needed: " + getInputData(getSection(userInput)));
         req.session.history.push({ role: 'user', content: gptInput.replace(" his ", " Grants ") }); // add latest input to messages
       }
       else {
@@ -115,9 +69,9 @@ router.get("/getGPTResponse",function(req,res){
       }
       
       let completion = await openai.chat.completions.create({
-        model:'gpt-3.5-turbo',
+        model:'gpt-3.5-turbo-0125',
         messages: req.session.history,
-        max_tokens: ((req.session.history.lenth/4) + (INPUT_TOKEN_LIMIT/4) + (REPLY_TOKEN_LIMIT/4))
+        max_tokens: ((req.session.history.lenth*(3/4)) + (INPUT_TOKEN_LIMIT*(3/4)) + (REPLY_TOKEN_LIMIT*(3/4)))
       });
 
       let response = completion.choices[0].message.content;
@@ -145,6 +99,73 @@ router.get("/getGPTResponse",function(req,res){
   }
   
 });
+
+/////////////////// Helper functions for chatgpt input
+
+//uses sections from getSection to get data fron json file
+function getInputData(sections) {
+  let returnData = [];
+  let json_data;
+
+  for (let i = 0; i < sections.length; i++) {
+    if (sections[i] == 'about') {
+      json_data = data.about;
+    }
+    else if (sections[i] == 'projects') {
+      json_data = data.projects;
+    }
+    else if (sections[i] == 'classes') {
+      json_data = data.classes;
+    }
+    else if (sections[i] == 'job_experience') {
+      json_data = data.job_experience;
+    }
+    else {
+      json_data = data.natalie;
+    }
+
+    returnData.push(["\n" + sections[i].toUpperCase() + ": "]);
+    for (let j = 0; j < json_data.length; j++) {
+      returnData[i].push(json_data[j]);
+    }
+  }
+
+  return returnData;
+}
+//uses typical words to pull out what data is needed
+function getSection(userInput) {
+  //words to test in each group
+  let testWords = [['skill', 'skills', 'traits', 'grant', 'personality', 'trait', 'activity', 'activities'], ['project', 'projects', 'experience', 'experiences', 'javascript', 'unity', 'work', 'website', 'portfolio'], ['experience', 'experiences', 'classes', 'class', 'coursework', 'course work', 'study'], ['experience', 'experiences', 'work-experience', 'work-experiences', 'work', 'jobs', 'job', 'employment'], ['natalie, love']];
+  let removePunctuation = userInput.replace(/[.,\/#!?$%\^'&\*;:{}=\-_`~()]/g,"").replace(/\s{2,}/g," ");
+  let returnStatement = [];
+  userInput = removePunctuation.trim().split(" ");
+
+  for (let i = 0; i < testWords.length; i++) {
+    for (let j = 0; j < userInput.length; j++) {
+      // if related to about
+      if (testWords[i].includes(userInput[j].toLowerCase()) && i == 0) {
+        returnStatement.push("about");
+      }
+      // if related to projects
+      if (testWords[i].includes(userInput[j].toLowerCase()) && i == 1) {
+        returnStatement.push("projects");
+      }
+      // if related to classes
+      if (testWords[i].includes(userInput[j].toLowerCase()) && i == 2) {
+        returnStatement.push("classes");
+      }
+      // if related to experience
+      if (testWords[i].includes(userInput[j].toLowerCase()) && i == 3) {
+        returnStatement.push("job_experience");
+      }
+      if (testWords[i].includes(userInput[j].toLowerCase()) && i == 4) {
+        returnStatement.push("natalie");
+      }
+    }
+  }
+
+  return returnStatement.filter((item,index) => returnStatement.indexOf(item) === index);
+}
 
 //////////////////////////////////////////////////////
 

@@ -16,7 +16,7 @@ router.use(function(req, res, next) {
 //////////////////////////////////////////////////////
 
 router.get("/successlogin", function(req, res) {
-  req.session.history = [ {role: 'system', content: "You are a helpful chatbot that reads provided data and answers questions accordingly. If the data doesn't relate to the question, you will answer normally. You don't provide code and only use given information without making up details."}];
+  req.session.history = [ {role: 'system', content: "You are a friendly and not boring chatbot that reads provided data and answers questions based on the data. If the data doesn't relate to the question, you will answer normally. You will never provide code."}];
   res.json({redirect:"/"});
 });
 router.get("/faillogin", function(req, res) {

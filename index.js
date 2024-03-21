@@ -19,8 +19,12 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(session({
     secret: "LUp$Dg?,I#i&owP3=9su+OB%`JgL4muLF5YJ~{;t",
-    resave: true,
-    saveUninitialized: true
+    resave: false,
+    saveUninitialized: true,
+    cookie: { 
+        maxAge: 1 * 60 * 60 * 1000, // 1 hour in milliseconds
+        expires: false
+      }
 }));
 app.use(flash());
 
@@ -37,8 +41,8 @@ app.use(routes);
 app.use(routesUser);
 
 ////////Socket Code//////////
-let server = http.createServer(app);
-let io = require('socket.io')(server);
+const server = http.createServer(app);
+const io = require('socket.io')(server);
 
 io.on('connection', function(socket) {
     // Send welcome message to the client

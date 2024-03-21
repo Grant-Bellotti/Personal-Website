@@ -11,8 +11,9 @@ socket.on('welcome', function(message) {
                 messages = messages.concat(data1.history);
             } 
             else {
+                console.log(data1.error);
                 $.post("/authenticate",{ username:'bob', password:'bob' },function(data2) {
-                    window.location = data2.redirect;
+                    location.reload();
                 });
             }
         },

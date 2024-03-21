@@ -1,24 +1,39 @@
 {
     "about":
     [
-        "skills: charismatic, hard working, honest, teamwork, reliable, empathetic",
-        "academics: 3.8 gpa, interested in software engineering, Computer Science major at UC Santa Cruz, started computer science in highschool",
-        "free time: ice skating, friends, staying active, hiking, video games, learning new things"
+        "skills: charismatic, hard working, honest, teamwork, reliable, empathetic, flexible, attention to detail",
+        "academics: 3.8 gpa, interested in software engineering, 2nd year Computer Science major at UC Santa Cruz, started computer science freshman year in highschool",
+        "free time: ice skating (new and just started getting good at it), spending time with friends, staying active, hiking, video games, trying new things",
+        "what Grant wants to do in future: learn to surf, travel to Japan, possibly play an instrument"
     ],
     "projects":
     [
+        "Projects are as follows:",
         "settlers of catan: group project, java",
-        "vrchat world: self-taught, unity, data optimization, uploaded to vrchat",
-        "silence: group leader, unity, c#, completed all online",
-        "social media website: group leader, javascript, html, css, node.js, basic mongodb",
-        "personal portfolio: this website, self taught, html, css, javascript, frontend, data optimization, used chatgpt to read data, express sessions to save coversation history",
-        "dining hall point tracker: self taught, google sheet, over 200 students worth of data sorting, google script"
+        "vrchat world and avatar: self-taught, unity, blender, lighting, data optimization, uploaded to vrchat for public use",
+        "silence: group leader, managed members and assigned tasks, reported results to teacher, unity, c#, completed all online",
+        "social media website: group leader, managed group members, presented alone, javascript, html, css, node.js, jquery, basic mongodb",
+        "personal portfolio: self taught, html, css, javascript, frontend and backend, image optimization, used chatgpt mondel-3.5-turbo to read and describe data, express sessions to save coversation history, website hosted on ubuntu environment, favorite project",
+        "dining hall point tracker: self taught, auto filled by google form, google sheet to organize and sort data, up to 200 students worth of data, google scripts to auto send emails to all managers"
+    ],
+    "classes":
+    [
+        "Grant is a student currently taking the following classes",
+        "Class 1 ( CSE 101: Introduction to Data Structures and Algortithms)",
+        "Class 2 ( CSE 120: Computer Architecture)",
+        "Class 3 ( LIT 81I: Engineering California)",
+        "Taking 15 credits, and you can find more information by visiting his class plan linked on this website."
     ],
     "job_experience":
     [
-        "panda express: April 2021 - August 2022, teamwork, customer service, fast-paced-environment",
-        "student employee: dining hall, September 2022 - March 2023, teamwork, customer service, fast-paced-environment",
-        "student supervisor: dining hall, current job since March 2023, teamwork, leadership, managing and reading data, scheduling, empathy, discipline, flexibility, problem-solving",
-        "summer intern: June 2023 - August 2023, Galileo Learning, teamwork, leadership, getting put in uncomfortable situations"
+        "Jobs are as follows:",
+        "panda express: April 2021 - August 2022, part-time, teamwork, customer service, fast-paced-environment, first job",
+        "student employee: dining hall, part-time, September 2022 - March 2023, teamwork, customer service, fast-paced-environment",
+        "summer intern: June 2023 - August 2023, full-time, Galileo Learning, teamwork, leadership, getting put in uncomfortable situations",
+        "student supervisor: dining hall, part-time, current job since March 2023, teamwork, leadership, managing and reading data, scheduling, empathy, discipline, flexibility, problem-solving, critical thinking, fast pased environment"
+    ],
+    "natalie":
+    [
+        "Natalie is Grant's girlfriend and he loves her very much."
     ]
 }
