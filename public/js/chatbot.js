@@ -32,6 +32,10 @@ $(document).ready(function() {
     //send message to server to get chatbot reply
     function sendMessage() {
         const userInput = textInput.val();
+        if (userInput.trim() == '') { //check if user input is just spaces
+            return;
+        }
+        
         textInput.val('');
         const msg = { role: "user", content: userInput };
         messages.push(msg);
@@ -45,6 +49,9 @@ $(document).ready(function() {
             success: function(data) {
                 messages.push(data);
                 updateChatText();
+                if (data.closeChat == true) {
+                    toggleChatbox();
+                }
             },
             dataType: "json"
         });

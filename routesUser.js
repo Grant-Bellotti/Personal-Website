@@ -16,6 +16,7 @@ const REPLY_TOKEN_LIMIT = 200.0; //100 tokens ~= 75 words
 
 //////////////////////////////////////////////////////
 
+// check if user is already authenticated (user is auto authenticated)
 router.get('/checkAuthenticated', function(req, res){
   if (req.isAuthenticated()) {
     let storedArray = req.session.history;
@@ -26,6 +27,7 @@ router.get('/checkAuthenticated', function(req, res){
   }
 });
 
+// authenticate the user
 router.post("/authenticate", function(req, res, next) {
   next();
 
@@ -35,6 +37,7 @@ router.post("/authenticate", function(req, res, next) {
   failureFlash: true
 }));
 
+// get the history of conversation
 router.get('/getHistory', function(req, res){
   if (req.isAuthenticated()) {
     let storedArray = req.session.myArray;
@@ -45,21 +48,29 @@ router.get('/getHistory', function(req, res){
   }
 });
 
+// use the chatgpt api to get assistant response
 router.get("/getGPTResponse",function(req,res){
   async function main() {
     let userInput = String(req.query.content).trim();
 
-    if (userInput.length > 50) {
-      res.json({ role: 'assistant', content: "Please make sure your character count is under 50." });
+    //check if user is trying to leave
+    if (userInput.toLowerCase() == 'exit' || userInput.toLowerCase() == 'bye' || userInput.toLowerCase() == 'good bye' || userInput.toLowerCase() == 'quit' || userInput.toLowerCase() == 'close') {
+      res.json({ role: 'assistant', content: "Please let me know if you have any more questions!", closeChat: true });
       return;
     }
-
-    else if (userInput.toLowerCase() == 'exit' || userInput.toLowerCase() == 'bye' || userInput.toLowerCase() == 'good bye') {
-      res.json({ role: 'assistant', content: "Please let me know if you have any more questions!" });
+    //user is out of requests
+    else if (req.session.requests <= 0) {
+      res.json({ role: 'assistant', content: "You have reached the limit of requests at this time. Please try again later!", closeChat: false  });
+      return;
+    }
+    //making sure user input isnt over 50
+    else if (userInput.length > 50) {
+      res.json({ role: 'assistant', content: "Please make sure your character count is under 50.", closeChat: false });
       return;
     }
 
     try {
+      // adds question to history to give chatgpt, adds data if needed
       if (getInputData(getSection(userInput)).length > 0) {
         let gptInput = ("Given this question: " + userInput + ", answer about Grant Bellotti the person. use the following data if needed: " + getInputData(getSection(userInput)));
         req.session.history.push({ role: 'user', content: gptInput.replace(" his ", " Grants ") }); // add latest input to messages
@@ -68,12 +79,14 @@ router.get("/getGPTResponse",function(req,res){
         req.session.history.push({ role: 'user', content: userInput });
       }
       
+      //use chatgpt api
       let completion = await openai.chat.completions.create({
         model:'gpt-3.5-turbo-0125',
         messages: req.session.history,
         max_tokens: ((req.session.history.lenth*(3/4)) + (INPUT_TOKEN_LIMIT*(3/4)) + (REPLY_TOKEN_LIMIT*(3/4)))
       });
 
+      //get response and remove question with data from history and put question back in
       let response = completion.choices[0].message.content;
       req.session.history.splice(req.session.history.length-1, 1);
       req.session.history.push({ role: 'user', content: userInput });
@@ -84,25 +97,27 @@ router.get("/getGPTResponse",function(req,res){
         req.session.history.splice(1,2);
       }
 
-      res.json({ error: false, role: 'assistant', content: response });
+      //use a request
+      req.session.requests -= 1;
+      res.json({ error: false, role: 'assistant', content: response, closeChat: false });
 
     } catch (error) {
       console.error(error);
-      res.json({ error: true, message: error });
+      res.json({ error: true, message: error, closeChat: false });
     }
   }
   if (req.isAuthenticated()) {
     main();
   }
   else {
-    res.json( { error:true, message:'user is not authenticated' } );
+    res.json( { error:true, message:'user is not authenticated'} );
   }
   
 });
 
 /////////////////// Helper functions for chatgpt input
 
-//uses sections from getSection to get data fron json file
+//uses sections from getSection to get data fron jsom file
 function getInputData(sections) {
   let returnData = [];
   let json_data;
