@@ -108,6 +108,9 @@ body {
   .timeline::after {
     left: 31px;
   }
+  .burger-menu {
+    padding-top: 60px;
+  }
 
 /* Full-width containers */
   .container {
