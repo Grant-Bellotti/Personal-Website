@@ -72,7 +72,7 @@ router.get("/getGPTResponse",function(req,res){
     try {
       // adds question to history to give chatgpt, adds data if needed
       if (getInputData(getSection(userInput)).length > 0) {
-        let gptInput = ("Given this question: " + userInput + ", answer about Grant Bellotti the person. use the following data if needed: " + getInputData(getSection(userInput)));
+        let gptInput = ("Given this question: " + userInput + ", answer about Grant Bellotti the person. Use the following data if needed, do not add any information not pertaining to the question: " + getInputData(getSection(userInput)));
         req.session.history.push({ role: 'user', content: gptInput.replace(" his ", " Grants ") }); // add latest input to messages
       }
       else {
@@ -81,7 +81,8 @@ router.get("/getGPTResponse",function(req,res){
       
       //use chatgpt api
       let completion = await openai.chat.completions.create({
-        model:'gpt-3.5-turbo-0125',
+        //model:'gpt-3.5-turbo-0125',
+        model:'gpt-4o',
         messages: req.session.history,
         max_tokens: ((req.session.history.lenth*(3/4)) + (INPUT_TOKEN_LIMIT*(3/4)) + (REPLY_TOKEN_LIMIT*(3/4)))
       });
@@ -132,11 +133,8 @@ function getInputData(sections) {
     else if (sections[i] == 'classes') {
       json_data = data.classes;
     }
-    else if (sections[i] == 'job_experience') {
-      json_data = data.job_experience;
-    }
     else {
-      json_data = data.natalie;
+      json_data = data.job_experience;
     }
 
     returnData.push(["\n" + sections[i].toUpperCase() + ": "]);
@@ -150,7 +148,7 @@ function getInputData(sections) {
 //uses typical words to pull out what data is needed
 function getSection(userInput) {
   //words to test in each group
-  let testWords = [['skill', 'skills', 'traits', 'grant', 'personality', 'trait', 'activity', 'activities'], ['project', 'projects', 'experience', 'experiences', 'javascript', 'unity', 'work', 'website', 'portfolio'], ['experience', 'experiences', 'classes', 'class', 'coursework', 'course work', 'study'], ['experience', 'experiences', 'work-experience', 'work-experiences', 'work', 'jobs', 'job', 'employment'], ['natalie, love']];
+  let testWords = [['skill', 'skills', 'traits', 'grant', 'personality', 'trait', 'activity', 'activities'], ['project', 'projects', 'experience', 'experiences', 'javascript', 'unity', 'work', 'website', 'portfolio'], ['experience', 'experiences', 'classes', 'class', 'coursework', 'course work', 'study'], ['experience', 'experiences', 'work-experience', 'work-experiences', 'work', 'jobs', 'job', 'employment']];
   let removePunctuation = userInput.replace(/[.,\/#!?$%\^'&\*;:{}=\-_`~()]/g,"").replace(/\s{2,}/g," ");
   let returnStatement = [];
   userInput = removePunctuation.trim().split(" ");
@@ -172,9 +170,6 @@ function getSection(userInput) {
       // if related to experience
       if (testWords[i].includes(userInput[j].toLowerCase()) && i == 3) {
         returnStatement.push("job_experience");
-      }
-      if (testWords[i].includes(userInput[j].toLowerCase()) && i == 4) {
-        returnStatement.push("natalie");
       }
     }
   }

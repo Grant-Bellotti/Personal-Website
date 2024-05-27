@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timeline</title>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="../css/timeline.css">
+  <link rel="stylesheet" href="../css/chatbox.css">
+  <link rel="shortcut icon" href="favicon.webp">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"> </script>
+  <script src='/socket.io/socket.io.js'></script>
+</head>
+
+<body> 
+
+  <!-- burger menue -->
+  <nav class="burger-menu">
+    <ul>
+      <li><a href="/home">Home</a></li>
+      <li><a href="/about">About Me</a></li>
+      <li><a href="/timeline">Timeline</a></li>
+      <!--<li><a href="https://drive.google.com/file/d/1xzaUc-eo7QS17YYlX82WIuA7m3hwvx8e/view?usp=sharing">Resume</a></li>-->
+      <li><a href="mailto:gbellotti725@gmail.com">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Header section -->
+  <header class="header-main">
+    <div class="header-main-logo">
+      <a href="/home"><img src="../favicon.webp" alt="logo"></a>
+    </div>
+    <nav class="header-main-nav">
+      <ul>
+        <li><a href="/home">Home</a></li>
+        <li><a href="/about">About Me</a></li>
+        <li><a href="/timeline">Timeline</a></li>
+        <!--<li><a href="https://drive.google.com/file/d/1xzaUc-eo7QS17YYlX82WIuA7m3hwvx8e/view?usp=sharing">Resume</a></li>-->
+        <li><a href="mailto:gbellotti725@gmail.com">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header-main-sm">
+      <a target="_blank" href="https://github.com/Grant-Bellotti"><div class="header-main-sm-gh"></div></a>
+      <a target="_blank" href="https://www.instagram.com/grant.bellotti/"><div class="header-main-sm-in"></div></a>
+      <a target="_blank" href="https://www.linkedin.com/in/grant-bellotti-b9290a238/"><div class="header-main-sm-ln"></div></a>
+      <div class="burger-menu-btn"></div>
+    </div>
+  </header> 
+
+  <!-- Timeline -->
+  <div class="timeline">
+    <div class="container left">
+      <div class="content">
+        <h2>Feb 2024 - Migrated to Web App</h2>
+        <p>I migrated from Hostinger to Digital Ocean in order to allow me to host the website on an Ubuntu virtual machine. This allowed me to not only create my own backend code, but also learn how to host a web application on my own computer. Switching to Node.JS allows me to use node modules, which is the foundation of this web app. I will never be "done" with this project because it will always be updated to reflect who I am, and as I get more experience, it'll only get better from here!</p>
+      </div>
+    </div>
+    <div class="container right">
+      <div class="content">
+        <h2>Aug 2023 - Personal Website Project</h2>
+        <p>I created this website! I began by mainly focusing on the aesthetics, and a plan to add more later. I took it upon myself to learn how to create clean and readable HTML and CSS along with how to design a website.</p>
+      </div>
+    </div>
+    <div class="container left">
+      <div class="content">
+        <h2>Jun 2022 - Web App Group Project</h2>
+        <p>During my final year of high school, I took the final computer science class my school had to offer, web programming. I learned how to use Node.JS to host a web application using JQuery and mny node modules. At the end of this class, I was the group leader for our final project. This project spanned the last two months of the class, where my group and I made a social media website. I learned a lot about GitHub and how to teach others instead of showing them the answer.</p>
+      </div>
+    </div>
+    <div class="container right">
+      <div class="content">
+        <h2>Apr 2022 - Admitted to UCSC</h2>
+        <p>I was admitted to UCSC, where I would become a Banana Slug. At first I was nervious about going to school far away from home, but I wouln't have it any other way!</p>
+      </div>
+    </div>
+    <div class="container left">
+      <div class="content">
+        <h2>Jun 2021 - Survivors Group Project</h2>
+        <p>During my last year of online learning, I took a game design class using Unity. I was the group leader of our final project, which lasted the last month of class. I made sure each group member stayed on task and worked on interesting parts to them, along with problem solving any issues we had. We decided to make a horror game with an enemy that uses sound to find the player. Creating a group project in a remote setting was challenging, but I learned a lot about motivating myself and others from it.</p>
+      </div>
+    </div>
+    <div class="container right">
+      <div class="content">
+        <h2>Apr 2021 - First Job</h2>
+        <p>My first job was at Stater Brothers, where I was a Courtesy Clerk. I learned a lot about customer service, and experienced some level of independence for the first time.</p>
+      </div>
+    </div>
+    <div class="container left">
+      <div class="content">
+        <h2>May 2020 - 3D Modeling & Unity</h2>
+        <p>I became fascinated with 3D modeling and Unity due to the game, VRChat. I learned how to create and edit avatars, materials, and Unity scenes, and published them to be used in game by anyone. VRChat allowed me to socialize during the pandemic and create international friendships that I still have to this day.</p>
+      </div>
+    </div>
+    <div class="container right">
+      <div class="content">
+        <h2>Mar 2020 - COVID</h2>
+        <p>My high school had to go into lockdown during my sophomore year because of COVID-19. A two-year lockdown that began as an extended spring break forced me to find new sources of inspiration and learning.</p>
+      </div>
+    </div>
+    <div class="container left">
+      <div class="content">
+        <h2>Dec 2019 - VR Headset</h2>
+        <p>After building a more powerful computer, I was able to run more demanding games and software. With the idea of exploring the worlds of virtual reality and experiencing the games with it, I bought a Valve Index. My favorite game was and still is Beat Saber because I love the physical requirements of it.</p>
+      </div>
+    </div>
+    <div class="container right">
+      <div class="content">
+        <h2>Jan 2019 - Built First Computer</h2>
+        <p>I began to be interested in computers and how they're made. Using Youtube as a reference, I built my own desktop computer with an Intel I7 9700k and a GeForce RTX 2070 Super.</p>
+      </div>
+    </div>
+    <div class="container left">
+      <div class="content">
+        <h2>Aug 2018 - First Class</h2>
+        <p>I chose to go to Mission Vista High School, where the teacher for the club taught. I took my first computer science class with him my freshman year, when I learned how to program in Java. This class only fueled by inspiration, and I ended up taking all four of his classes there.</p>
+      </div>
+    </div>
+    <div class="container right">
+      <div class="content">
+        <h2>Nov 2016 - Introduction</h2>
+        <p>In 7th grade, a teacher from a high school in my school district was hosting an after school club to introduce students to computer programming. I decided to join, beginning my journey and passion for computer science.</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Chat box -->
+
+  <section class="chatbox-container">
+    <div class="chatbox">
+        <div class="chatbox-window">
+            <div class="chatbox-header">
+                <div class="chatbox-header-image">
+                    <img src="/img/chatbot.png" alt="image">
+                </div>
+                <div class="chatbox-header-content">
+                    <h4 class="chatbox-header-heading">Chat About Grant</h4>
+                    <p class="chatbox-header-description">Hi, how can I help you today?</p>
+                </div>
+            </div>
+            <div class="chatbox-messages">
+                <div></div>
+            </div>
+            <div class="chatbox-footer">
+                <input id="message-input" type="text" maxlength = "50" placeholder="Write a message...">
+                <p id="chatbox-footer-wordcount">0/50</p>
+                <button class="chatbox-footer-send chatbox-footer-send-button">Send</button>
+            </div>
+        </div>
+        <div class="chatbox-button">
+            <button><img src="/img/chatbox.png" /></button>
+        </div>
+    </div>
+  </section>
+
+  <!-- Footer section -->
+
+  <footer class="footer-main" id="contact">
+    <div class="wrapper-main footer-main-flex">
+      <div class="footer-sitemap">
+          <ul>
+              <li><a href="/home">Home</a></li>
+              <li><a href="/about">About Me</a></li>
+              <li><a href="/timeline">Timeline</a></li>
+              <li><a href="mailto:gbellotti725@gmail.com">Contact</a></li>
+          </ul>
+          <ul>
+              <li><a target="_blank" href="https://docs.google.com/spreadsheets/d/1mZoPowiFVJLOJBzlOE2a2va3k7uGlDs8bdrWTVLf9BQ/edit?usp=sharing">Class Plan</a></li>
+              <li><a target="_blank" href="https://drive.google.com/file/d/1xzaUc-eo7QS17YYlX82WIuA7m3hwvx8e/view?usp=sharing">Resume</a></li>
+              <li><a target="_blank" href="https://github.com/Grant-Bellotti?tab=repositories">Projects</a></li>
+          </ul>
+          <ul>
+              <li>
+                <p>If you're interested, please don't hesitate to send me an e-mail to arrange a meeting!</p>
+              </li>
+          </ul>
+          <ul>
+            <li><p>Get In Touch:</p></li>
+            <li><p><a href="mailto:gbellotti725@gmail.com">gbellotti725@gmail.com</a></p></li>
+          </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/authenticate.js"></script>
+  <script src="../js/chatbot.js"></script>
+  <script src="../js/burger.js"></script>
+
+</body>
+</html>

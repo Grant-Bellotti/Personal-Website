@@ -16,7 +16,7 @@ router.use(function(req, res, next) {
 //////////////////////////////////////////////////////
 
 router.get("/successlogin", function(req, res) {
-  req.session.history = [ {role: 'system', content: "You are a friendly and not boring chatbot that reads provided data and answers questions based on the data. If the data doesn't relate to the question, you will answer normally. You will never provide code."}];
+  req.session.history = [ {role: 'system', content: "You are a friendly and energetic chatbot that reads provided data and answers questions based on the data. All data should be read in complete sentences. If the data doesn't relate to the question, you will answer normally. You will never provide code."}];
   req.session.requests = 15;
   res.json({redirect:"/"});
 });
@@ -34,6 +34,9 @@ router.get("/home",function(req,res){
 });
 router.get("/about",function(req,res){
   res.sendFile(path.resolve(__dirname + "/public/views/about.html"));  //changed
+});
+router.get("/timeline",function(req,res){
+  res.sendFile(path.resolve(__dirname + "/public/views/timeline.html"));  //changed
 });
 
 //////////////////////////////////////////////////////

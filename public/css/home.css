@@ -197,10 +197,10 @@ main .main-quotes {
   width: 30%;
 }
 .cplus {
-  width: 0%;
+  width: 60%;
 }
 .c {
-  width: 30%;
+  width: 50%;
 }
 
 @media only screen and (min-width: 700px) and (max-width: 1100px) { /*ipad*/
